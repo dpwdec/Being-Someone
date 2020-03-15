@@ -1,0 +1,7 @@
+<h1>About</h1>
+<p><%= current_page?(controller: 'home', action: 'about') %></p>
+<% if request.env['PATH_INFO']=='/' %>
+	<p>We area root</p>
+<% else %>
+	<p>We area not root</p>
+<% end %>

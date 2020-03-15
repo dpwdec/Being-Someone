@@ -1,2 +1,5 @@
 <h1>Who are you?</h1>
 <p><%= @pz["512"] %></p>
+<% if current_page?('/') %>
+	<p>We area root</p>
+<% end %>
