@@ -1,14 +1,12 @@
 <h1>Who are you?</h1>
-<p> here is the json<%= @response_JSON %></p>
-the character is <%= @jg %>
+<%= @generated_image_id %>
+<p> <%= @generated_image_error %></p>
 <% if current_page?('/') %>
 	<p>We area root</p>
 <% end %>
 <% if @generated_image_hash != nil %>
 	<%= image_tag(@generated_image_hash["512"]) %>
 <% end %>
-</br>
-<%= @generate_faces_query %>
 
 
 

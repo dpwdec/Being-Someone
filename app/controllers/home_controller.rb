@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       @hair = "hair_color=#{params[:hair_id].downcase}&"
       @age = "age=#{params[:age_id].downcase}&"
 
-      @number_of_faces = 1
+      @number_of_faces = 100
       @faces_per_page = "per_page=#{@number_of_faces}"
 
       @api_key = "&api_key=byBeP6pY1klyflG5QX5uDA"
@@ -23,10 +23,14 @@ class HomeController < ApplicationController
       @api_key
 
       response = Faraday.get @generate_faces_query
-      @jg = response.body.chars[response.body.length-2]
+      @body = response.body
       @response_JSON = JSON.parse(response.body)
-      if @response_JSON != nil
-        #@generated_image_hash = @response_JSON['faces'][0]['urls'].reduce(Hash.new, :merge)
+      if @response_JSON['total'] > 0
+        @face_sample = @response_JSON['faces'].sample
+        @generated_image_id = @face_sample['id']
+        @generated_image_hash = @face_sample['urls'].reduce(Hash.new, :merge)
+      else
+        @generated_image_error = "no image found"
       end
 
     end
