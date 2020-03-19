@@ -3,3 +3,16 @@
 <% if current_page?('/') %>
 	<p>We area root</p>
 <% end %>
+
+<%= @city %>
+
+
+
+<%= form_with url: home_index_path, method: "POST", local: true do |form| %>
+	<%= form.label "Gender:" %>
+	<%= form.text_field :title %>
+	<%= form.select(:base_id, options_for_select(['Lisbon', 'London', 'Brazil'], 'Brazil')) %>
+		<%= form.select(:city_id, options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]], 2)) %>
+		<%= form.select(:some_id, ['Toronto', 'New York', 'Grand Fils'], {include_blank: true}) %>
+	<%= form.submit %>
+<% end %>

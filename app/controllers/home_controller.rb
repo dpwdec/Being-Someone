@@ -9,7 +9,11 @@ class HomeController < ApplicationController
   	@pq = JSON.parse(@qt)
   	@pz = @pq['faces'][6]["urls"].reduce(Hash.new, :merge)
 
-  	@iscurrent = request.env['PATH_INFO'] 
+  	@iscurrent = request.env['PATH_INFO']
+
+    @echoer = params[:title]
+    @city = params.inspect
+
   end
 
   def about
