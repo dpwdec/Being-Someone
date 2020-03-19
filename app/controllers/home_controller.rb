@@ -1,6 +1,37 @@
 class HomeController < ApplicationController
   def index
-  	#j = ActiveSupport::JSON
+  	
+    if params[:age_id] != nil
+      @generated_faces_url_prefix = "https://api.generated.photos/api/v1/faces?"
+
+      @gender = "gender=#{params[:gender_id].downcase}&"
+      @ethnicity = "ethnicity=#{params[:ethnic_id].downcase}&"
+      @hair = "hair_color=#{params[:hair_id].downcase}&"
+      @age = "age=#{params[:age_id].downcase}&"
+
+      @number_of_faces = 1
+      @faces_per_page = "per_page=#{@number_of_faces}"
+
+      @api_key = "&api_key=byBeP6pY1klyflG5QX5uDA"
+
+      @generate_faces_query = @generated_faces_url_prefix+
+      @gender+
+      @ethnicity+
+      @hair+
+      @age+
+      @faces_per_page+
+      @api_key
+
+      response = Faraday.get @generate_faces_query
+      @jg = response.body.chars[response.body.length-2]
+      @response_JSON = JSON.parse(response.body)
+      if @response_JSON != nil
+        #@generated_image_hash = @response_JSON['faces'][0]['urls'].reduce(Hash.new, :merge)
+      end
+
+    end
+
+    #j = ActiveSupport::JSON
 
   	#response = Faraday.get 'https://graph.facebook.com/youtube'
   	#response = Faraday.get 'https://api.generated.photos/api/v1/faces?ethnicity=asian&gender=female&api_key=byBeP6pY1klyflG5QX5uDA'
@@ -11,8 +42,16 @@ class HomeController < ApplicationController
 
   	@iscurrent = request.env['PATH_INFO']
 
-    @echoer = params[:title]
-    @city = params.inspect
+    #@gender = params[:gender_id].downcase
+    #@ethnicity = params[:ethnic_id].downcase
+    #@hair = params[:hair_id].downcase
+    #@age = params[:age_id].downcase
+
+    "this is a string #{}"
+
+    if @age != nil 
+      @fpath = "https://api.generated.photos/api/v1/faces?gender=#{@gender}&ethnicity=#{@ethnicity}&hair_color=#{@hair}&age=#{@age}&api_key=byBeP6pY1klyflG5QX5uDA"
+    end
 
   end
 

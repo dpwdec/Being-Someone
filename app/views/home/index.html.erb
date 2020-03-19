@@ -1,18 +1,28 @@
 <h1>Who are you?</h1>
-<p><%= @pz["512"] %></p>
+<p> here is the json<%= @response_JSON %></p>
+the character is <%= @jg %>
 <% if current_page?('/') %>
 	<p>We area root</p>
 <% end %>
-
-<%= @city %>
+<% if @generated_image_hash != nil %>
+	<%= image_tag(@generated_image_hash["512"]) %>
+<% end %>
+</br>
+<%= @generate_faces_query %>
 
 
 
 <%= form_with url: home_index_path, method: "POST", local: true do |form| %>
 	<%= form.label "Gender:" %>
-	<%= form.text_field :title %>
-	<%= form.select(:base_id, options_for_select(['Lisbon', 'London', 'Brazil'], 'Brazil')) %>
-		<%= form.select(:city_id, options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]], 2)) %>
-		<%= form.select(:some_id, ['Toronto', 'New York', 'Grand Fils'], {include_blank: true}) %>
+	<%= form.select(:gender_id, ['Male','Female']) %>
+
+	<%= form.label "Ethnicity:" %>
+	<%= form.select(:ethnic_id, ['White','Black', 'Asian', 'Latino', 'Prefer Not To Say']) %>
+
+	<%= form.label "Hair Color:" %>
+	<%= form.select(:hair_id, ['Brown','Blond', 'Black', 'Gray', 'Red']) %>
+
+	<%= form.label "Age:" %>
+	<%= form.select(:age_id, ['Infant','Child', 'Young-adult', 'Adult', 'Elderly']) %>
 	<%= form.submit %>
 <% end %>
