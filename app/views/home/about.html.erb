@@ -5,3 +5,50 @@
 <% else %>
 	<p>We area not root</p>
 <% end %>
+
+<style>
+	
+	.custom-button {
+		background-image: url("data:image/svg+xml,%3Csvg height='10pt' viewBox='0 0 448 448' width='10pt' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0'/%3E%3C/svg%3E");
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat;
+    background-size: 100% 100%;
+	}
+
+	.button-mesh {
+	  padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+	}
+
+	.my-btn {
+		height: 50px;
+		width: 50px;  
+		background-image: url("data:image/svg+xml,%3Csvg height='32pt' viewBox='0 0 448 448' width='32pt' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m408 184h-136c-4.417969 0-8-3.582031-8-8v-136c0-22.089844-17.910156-40-40-40s-40 17.910156-40 40v136c0 4.417969-3.582031 8-8 8h-136c-22.089844 0-40 17.910156-40 40s17.910156 40 40 40h136c4.417969 0 8 3.582031 8 8v136c0 22.089844 17.910156 40 40 40s40-17.910156 40-40v-136c0-4.417969 3.582031-8 8-8h136c22.089844 0 40-17.910156 40-40s-17.910156-40-40-40zm0 0'/%3E%3C/svg%3E");
+		background-repeat:no-repeat;
+		background-position: center;
+		border-color: pink;
+	}
+
+	.container-btn
+	{
+		height: 50px;
+		width: 50px;
+	}
+
+</style>
+
+<button class="my-btn"></button>
+
+<button class="container-btn"><span class="my-btn"></span></button>
+
+</br>
+
+<button class="button-mesh custom-button">
+</button>
