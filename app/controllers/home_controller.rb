@@ -62,4 +62,16 @@ class HomeController < ApplicationController
   def about
   end
 
+  def lumptest
+    @my_lump = Lump.new
+    @my_lump.name = "David"
+    @my_lump.height = 175
+    @my_lump.nick_name = "DAVI"
+
+    @my_blob = Blob.new
+    @my_blob.name = "Jesus"
+    @my_blob.blobby_factor = 2.38
+    @my_blob.permeable = true
+  end
+
 end

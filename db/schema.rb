@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200321113221) do
+ActiveRecord::Schema.define(version: 20200329132300) do
+
+  create_table "blobs", force: :cascade do |t|
+    t.string "name"
+    t.float "blobby_factor"
+    t.boolean "permeable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "lumps", force: :cascade do |t|
     t.string "name"
+    t.float "height"
+    t.string "nick_name"
+    t.float "weight"
+    t.string "city"
+    t.date "birth_date"
+    t.boolean "fantastical"
+    t.boolean "exists"
   end
 
   create_table "users", force: :cascade do |t|
